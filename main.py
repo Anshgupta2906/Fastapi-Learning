@@ -21,14 +21,14 @@ def read_root():
 
 @app.get("/goals")
 def get_goals():
-    return{"goal":clients_db}
+    return clients_db
 
 @app.post("/clients")
-def body_weigth(BW:Client):
-    post_dict=BW.dict()
-    post_dict['id'] = randrange(0,1000000)
-    clients_db.append(post_dict)
-    return{"data":post_dict}
+def body_weigth(client:Client):
+    new=client.dict()
+    new['id'] = randrange(0,1000000)
+    clients_db.append(new)
+    return new
 
 #title str,content str, category,bool published or draft
 
